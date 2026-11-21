@@ -1,0 +1,82 @@
+:root{
+  --green:#0b7a3e; --green-d:#08652f; --blue:#0a7cff; --purple:#5b2bb0;
+  --text:#0b1220; --muted:#566074;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--text);min-height:100vh;
+  background:url('../images/hero-background.jpg') center/cover no-repeat fixed}
+a{text-decoration:none;color:inherit}
+
+/* Navbar */
+.navbar{display:flex;align-items:center;justify-content:space-between;gap:24px;
+  background:#fff;padding:0 32px;height:82px;box-shadow:0 2px 12px rgba(0,0,0,.06);position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-size:32px;font-weight:700}
+.nav-links{display:flex;gap:44px;height:100%}
+.nav-links a{display:flex;align-items:center;font-weight:500;font-size:16px;height:100%;
+  border-bottom:3px solid transparent;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-links a.active{color:var(--green);border-bottom-color:var(--green);font-weight:600}
+.nav-actions{display:flex;gap:16px}
+.btn{padding:13px 28px;border-radius:8px;font-weight:600;font-size:17px;border:1.5px solid var(--green);transition:.2s}
+.btn-outline-green{color:var(--green);background:#fff}
+.btn-outline-green:hover{background:#eefaf3}
+.btn-solid-green{color:#fff;background:var(--green)}
+.btn-solid-green:hover{background:var(--green-d)}
+.menu-toggle{display:none;background:none;border:0;font-size:28px;cursor:pointer}
+
+/* Hero + card */
+.hero{display:flex;justify-content:center;padding:56px 24px}
+.login-card{width:100%;max-width:1260px;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);
+  border-radius:22px;padding:28px 50px 42px;text-align:center;box-shadow:0 20px 60px rgba(20,80,50,.15)}
+.login-card h1{font-size:56px;font-weight:800;letter-spacing:-1px}
+.subtitle{font-size:26px;color:var(--muted);margin:6px 0 28px}
+
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.role{border-radius:14px;padding:30px 30px 28px;border:1px solid;transition:transform .2s,box-shadow .2s}
+.role:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(0,0,0,.08)}
+.role.supplier{background:#effaf2;border-color:#cfeed9}
+.role.buyer{background:#eef7ff;border-color:#c9e3f8}
+.role.admin{background:#f4f1ff;border-color:#dcd3f5}
+.role-icon{width:132px;height:132px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center}
+.role-icon img{width:62px;height:62px}
+.supplier .role-icon{background:#dcf3e3}
+.buyer .role-icon{background:#dcecfb}
+.admin .role-icon{background:#e8e2f8}
+.role h2{font-size:34px;font-weight:700;margin-bottom:10px}
+.role p{font-size:20px;color:var(--muted);line-height:1.5;min-height:60px;margin-bottom:28px}
+
+.btn-login{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+  padding:18px;border:0;border-radius:10px;color:#fff;font:600 26px 'Inter',sans-serif;cursor:pointer;transition:filter .2s,transform .1s}
+.btn-login img{width:30px;height:30px}
+.btn-login:hover{filter:brightness(1.1)}
+.btn-login:active{transform:scale(.98)}
+.btn-login.green{background:var(--green)}
+.btn-login.blue{background:var(--blue)}
+.btn-login.purple{background:var(--purple)}
+
+/* Bottom */
+.divider{display:flex;align-items:center;gap:22px;max-width:510px;margin:30px auto 22px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:#cfd6dd}
+.signup-text{font-size:20px;margin-bottom:18px}
+.signup-text a{color:var(--green);font-weight:600;text-decoration:underline}
+.signup-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.btn-sm{padding:15px 44px;border-radius:8px;font-size:19px;font-weight:600;background:#fff;border:1.5px solid;transition:.2s}
+.green-o{color:var(--green);border-color:var(--green)}
+.green-o:hover{background:#effaf2}
+.blue-o{color:var(--blue);border-color:var(--blue)}
+.blue-o:hover{background:#eef7ff}
+
+a:focus-visible,button:focus-visible{outline:3px solid #7cc4ff;outline-offset:2px}
+
+/* Responsive */
+@media(max-width:1000px){
+  .roles{grid-template-columns:1fr}
+  .login-card{padding:24px 22px 34px}
+  .login-card h1{font-size:40px}
+  .nav-actions{display:none}
+  .menu-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:82px;left:0;right:0;background:#fff;flex-direction:column;
+    gap:0;height:auto;padding:8px 24px 16px;box-shadow:0 10px 20px rgba(0,0,0,.08)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 0;border-bottom:1px solid #eee}
+}
