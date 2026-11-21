@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReSource – Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="#" class="brand"><img src="assets/images/logo/logo-icon.png" alt="" width="48" height="48"><span>ReSource</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="#">Browse Materials</a>
+      <a href="#">How It Works</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-outline-green">Login</a>
+      <a href="#" class="btn btn-solid-green">Sign Up</a>
+    </div>
+  </header>
+
+  <main class="hero">
+    <section class="login-card">
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Login to your account</p>
+
+      <div class="roles">
+        <article class="role supplier">
+          <div class="role-icon"><img src="assets/images/icons/icon-supplier.svg" alt=""></div>
+          <h2>Supplier</h2>
+          <p>Manage your listings, orders and more.</p>
+          <a class="btn-login green" href="supplier-login.html"><img src="assets/images/icons/icon-login.svg" alt="">Login</a>
+        </article>
+
+        <article class="role buyer">
+          <div class="role-icon"><img src="assets/images/icons/icon-buyer.svg" alt=""></div>
+          <h2>Buyer</h2>
+          <p>Find materials, post requests and track orders.</p>
+          <a class="btn-login blue" href="buyer-login.html"><img src="assets/images/icons/icon-login.svg" alt="">Login</a>
+        </article>
+
+        <article class="role admin">
+          <div class="role-icon"><img src="assets/images/icons/icon-admin.svg" alt=""></div>
+          <h2>Admin</h2>
+          <p>Manage platform, users and reports.</p>
+          <a class="btn-login purple" href="admin-login.html"><img src="assets/images/icons/icon-login.svg" alt="">Login</a>
+        </article>
+      </div>
+
+      <div class="divider"><span>OR</span></div>
+      <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+      <div class="signup-buttons">
+        <a href="supplier-signup.html" class="btn-sm green-o">Sign up as Supplier</a>
+        <a href="buyer-signup.html" class="btn-sm blue-o">Sign up as Buyer</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

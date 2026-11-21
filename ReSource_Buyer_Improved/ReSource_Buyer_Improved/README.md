@@ -1,0 +1,35 @@
+# ReSource Buyer Module — Improved UI (HTML + CSS only)
+
+This project contains the Buyer authentication screens, dashboard, and linked Buyer workflow pages from the ReSource role requirements. The project deliberately contains no JavaScript.
+
+## Run in VS Code
+1. Extract the ZIP archive.
+2. Open the `ReSource_Buyer_Improved` folder in VS Code.
+3. Install/enable the Live Server extension if needed.
+4. Right-click `index.html` and choose **Open with Live Server**.
+5. Use the launcher page to open Buyer Sign Up, Buyer Login, Buyer Dashboard, Browse Materials, Material Details & Wanted Request, My Requests, Matching Results & Quotations, My Orders, Messages, or Profile Settings.
+
+## Improvements in this version
+- Added `assets/css/design-system.css` after each page stylesheet to unify typography, logo sizing, color tokens, focus states, card shadows, button hover behavior, and responsive logo sizing.
+- Kept the same `assets/images/logo/resource-logo.svg` as the single shared logo asset on all pages.
+- Updated public header navigation to point to real Buyer pages rather than empty in-page anchors.
+- Linked the buyer profile/account chip to Profile Settings and standardized the notifications icon.
+- Added keyboard-accessible “Skip to main content” links and `aria-current="page"` on active navigation items.
+- Added reduced-motion support, consistent focus indicators, and help text targets for the terms/forgot-password placeholder links.
+- Preserved local material image assets, CSS-only layout, and the current project structure.
+- Changed signup/login and password-change forms to POST so passwords are not placed in query strings.
+
+## Pages
+- `buyer-signup.html`
+- `buyer-login.html`
+- `buyer-dashboard.html`
+- `pages/buyer/browse-materials.html`
+- `pages/buyer/material-details-request.html`
+- `pages/buyer/my-requests.html`
+- `pages/buyer/matching-quotations.html`
+- `pages/buyer/my-orders.html`
+- `pages/buyer/messages.html`
+- `pages/buyer/profile-settings.html`
+
+## Important limitations
+This is a static frontend prototype. Search and filter controls, profile updates, wanted requests, quotation acceptance, order confirmation, messaging, reviews, and reports are visual/native HTML controls only and do not save or transmit data. Real login/signup, persistent changes, quote validity checks, and supplier/admin integration require secure backend authentication and a database. Authentication forms use POST rather than GET so passwords are not placed in query strings; don't treat the static forms as a working authentication system.

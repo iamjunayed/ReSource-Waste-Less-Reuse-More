@@ -1,0 +1,272 @@
+/* ReSource shared design polish — loaded after page stylesheets. HTML + CSS only. */
+:root {
+  --rs-green: #07864b;
+  --rs-green-dark: #056c3d;
+  --rs-green-soft: #e0f8ed;
+  --rs-blue: #087bf4;
+  --rs-blue-dark: #0068d9;
+  --rs-navy: #101831;
+  --rs-text: #17213a;
+  --rs-muted: #65718a;
+  --rs-line: #e2e8f0;
+  --rs-canvas: #f3f8fd;
+  --rs-radius: 12px;
+  --rs-shadow: 0 5px 20px rgba(24, 54, 94, .06);
+}
+
+html { scroll-padding-top: 88px; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+img { max-width: 100%; }
+button, input, select, textarea { font-family: inherit; }
+
+/* One exact logo asset and proportion across the public and dashboard headers. */
+.site-header .brand-logo,
+.buyer-topbar .brand-logo,
+.topbar .brand-logo,
+.launch-brand img {
+  display: block;
+  width: 190px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.site-header, .buyer-topbar, .topbar {
+  background-color: rgba(255, 255, 255, .98);
+  border-bottom: 1px solid #dfe7f0;
+  box-shadow: 0 2px 12px rgba(18, 42, 70, .035);
+}
+
+/* Consistent keyboard focus and clear interactive feedback. */
+a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(8, 123, 244, .34);
+  outline-offset: 3px;
+}
+a, button { transition: color .16s ease, background-color .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease; }
+button, input[type="submit"], input[type="button"] { cursor: pointer; }
+
+/* Shared content surfaces, typography and form controls. */
+.card, .panel, .form-panel, .stat-card, .search-panel, .quote-card,
+.material-card, .match-card, .message-item, .order-card {
+  border-radius: var(--rs-radius);
+}
+.card, .panel, .stat-card, .form-panel, .search-panel {
+  box-shadow: var(--rs-shadow);
+}
+.buyer-main .page-heading h1,
+.main-content .page-heading h1 {
+  color: var(--rs-navy);
+  font-size: clamp(26px, 2.15vw, 34px);
+  line-height: 1.16;
+  letter-spacing: -.75px;
+  font-weight: 780;
+}
+.buyer-main .page-heading p,
+.main-content .page-heading p { color: var(--rs-muted); }
+.buyer-main .eyebrow, .main-content .eyebrow { color: var(--rs-green); }
+.btn.green, .button-green { background: var(--rs-green); }
+.btn.green:hover, .button-green:hover { background: var(--rs-green-dark); }
+.btn:not(.green):not(.outline):not(.light):not(.danger), .primary-button, .small-button {
+  background-color: var(--rs-blue);
+}
+.btn:not(.green):not(.outline):not(.light):not(.danger):hover,
+.primary-button:hover, .small-button:hover { background-color: var(--rs-blue-dark); }
+.field input, .field select, .field textarea,
+.field-row, .search-input, .search-input-wrap, .category-select select {
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus,
+.search-input:focus-within, .search-input-wrap:focus-within,
+.category-select select:focus {
+  border-color: #78b6f7;
+  box-shadow: 0 0 0 3px rgba(8, 123, 244, .09);
+  outline: none;
+}
+.data-table th { letter-spacing: .01em; }
+.data-table td { line-height: 1.45; }
+.material-card, .match-card, .category-tile, .quick-action {
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.material-card:hover, .match-card:hover, .category-tile:hover, .quick-action:hover {
+  border-color: #cbdff4;
+  box-shadow: 0 8px 24px rgba(24, 54, 94, .09);
+  transform: translateY(-2px);
+}
+.material-photo, .detail-photo, .detail-thumbs img, .match-card img,
+.category-tile img, .recent-item img, .order-product img {
+  background: #edf3f7;
+}
+
+/* Navigation uses a consistent hover, active and selected-page treatment. */
+.side-link.active, .nav-link.active { font-weight: 700; }
+.side-link:focus-visible, .nav-link:focus-visible, .logout-link:focus-visible { outline-offset: -2px; }
+.side-link:not(.active):hover, .nav-link:not(.active):hover { color: var(--rs-blue); }
+.main-nav a[aria-current="page"] { color: var(--rs-green); }
+
+/* Short and predictable mobile header/logo treatment across all page types. */
+@media (max-width: 900px) {
+  .site-header .brand-logo, .buyer-topbar .brand-logo, .topbar .brand-logo,
+  .launch-brand img { width: 168px; }
+}
+@media (max-width: 560px) {
+  .site-header .brand-logo, .buyer-topbar .brand-logo, .topbar .brand-logo,
+  .launch-brand img { width: 148px; }
+  .form-panel, .panel { border-radius: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* Visible only when keyboard users move focus to it. */
+.skip-link {
+  position: fixed; z-index: 1000; top: 8px; left: 8px;
+  padding: 10px 14px; color: #fff; background: var(--rs-navy);
+  border-radius: 8px; transform: translateY(-150%);
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* Inline help appears only when its related explanatory link is selected. */
+.auth-note {
+  display: none;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #d9e9f8;
+  border-radius: 8px;
+  background: #f4f9ff;
+  color: #4d6079;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.auth-note:target { display: block; }
+
+
+/* Persistent Buyer navigation: fixed desktop sidebar and always-visible Logout. */
+@media (min-width: 801px) {
+  .buyer-topbar { position: sticky; top: 0; z-index: 50; }
+  .buyer-layout { display: block; min-height: calc(100vh - 76px); }
+  .buyer-sidebar {
+    position: fixed;
+    z-index: 40;
+    top: 76px;
+    bottom: 0;
+    left: 0;
+    width: 258px;
+    height: calc(100vh - 76px);
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 17px 15px 10px;
+  }
+  .buyer-side-nav {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #c7d7e8 transparent;
+  }
+  .buyer-sidebar .side-spacer { display: none; }
+  .buyer-sidebar .side-link.logout {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 50px;
+    margin: 8px 0 0;
+    padding: 10px 17px 4px;
+    border-top: 1px solid #dce7f3;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .buyer-main { margin-left: 258px; min-width: 0; }
+}
+@media (min-width: 801px) and (max-width: 1200px) {
+  .buyer-sidebar { width: 220px; }
+  .buyer-main { margin-left: 220px; padding-left: 18px; padding-right: 18px; }
+}
+@media (max-width: 800px) {
+  .buyer-topbar { position: sticky; top: 0; z-index: 50; }
+  .buyer-layout { display: block; min-height: 0; }
+  .buyer-sidebar {
+    position: sticky;
+    z-index: 35;
+    top: 66px;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-right: 0;
+    border-bottom: 1px solid #dce7f3;
+  }
+  .buyer-side-nav {
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-direction: row;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0 2px;
+    scrollbar-width: thin;
+  }
+  .buyer-sidebar .side-link { flex: 0 0 auto; min-height: 40px; padding: 8px 12px; font-size: 12px; gap: 7px; }
+  .buyer-sidebar .side-link .nav-icon { font-size: 15px; width: auto; }
+  .buyer-sidebar .side-spacer { display: none; }
+  .buyer-sidebar .side-link.logout {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 50px;
+    justify-content: center;
+    margin: 0;
+    padding: 9px 16px;
+    border-top: 1px solid #dce7f3;
+    background: rgba(255,255,255,.98);
+    box-shadow: 0 -4px 16px rgba(24,54,94,.07);
+  }
+  .buyer-main { margin-left: 0; padding-bottom: 84px; }
+}
+
+
+/* Material photos: show the full generated scene and avoid the zoomed/cropped look. */
+.material-photo,
+.detail-photo,
+.detail-thumbs img,
+.match-card img,
+.category-tile img,
+.quote-hero img,
+.recent-item img,
+.order-product img {
+  object-fit: contain;
+  object-position: center center;
+  background-color: #f4f7fa;
+}
+
+/* ReSource Platform Admin shared additions. Existing Buyer/Supplier rules above are preserved. */
+.admin-page { --admin-purple:#5825b6; --admin-border:#e4ebf3; --admin-muted:#65718a; margin:0; min-height:100vh; background:#f3f8fd; color:#101831; font-family:Inter,Arial,sans-serif; }
+.admin-page *, .admin-page *::before, .admin-page *::after { box-sizing:border-box; }
+.admin-page a { text-decoration:none; }
+.admin-page button, .admin-page input, .admin-page select, .admin-page textarea { font:inherit; }
+.admin-page .admin-panel, .admin-page .admin-stat-card, .admin-page .summary-card { background:#fff; border:1px solid var(--admin-border); border-radius:10px; box-shadow:0 3px 12px rgba(16,40,75,.025); }
+.admin-page .admin-button { display:inline-flex; align-items:center; justify-content:center; gap:7px; border:0; border-radius:6px; padding:10px 14px; background:#087bf4; color:#fff; font-weight:600; cursor:pointer; }
+.admin-page .admin-button:hover { background:#0068d9; }
+.admin-page .admin-button.secondary { background:#edf4fc; color:#23568f; }
+.admin-page .admin-button.danger { background:#e32222; }
+.admin-page .admin-input, .admin-page .admin-select, .admin-page .admin-textarea { width:100%; min-height:40px; padding:10px 12px; border:1px solid #d8e2ee; border-radius:7px; background:#fff; color:#17213a; }
+.admin-page .admin-input:focus, .admin-page .admin-select:focus, .admin-page .admin-textarea:focus { outline:0; border-color:#78b6f7; box-shadow:0 0 0 3px rgba(8,123,244,.09); }
