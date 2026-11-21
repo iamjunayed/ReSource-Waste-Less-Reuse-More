@@ -733,19 +733,18 @@ input[type="button"] {
 }
 /* ReSource Navbar Logo Size */
 .navbar .brand {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .navbar .brand-logo {
-    width: 150px !important;
-    height: 70px !important;
-    max-width: none;
-    object-fit: contain;
-    display: block;
+  width: 150px !important;
+  height: 70px !important;
+  max-width: none;
+  object-fit: contain;
+  display: block;
 }
-
 
 /* ReSource supplier visual language — shared system refinements */
 :root {
@@ -758,11 +757,17 @@ input[type="button"] {
   --rs-line: #e3ebe3;
   --rs-canvas: #f5f7ef;
   --rs-radius: 15px;
-  --rs-shadow: 0 12px 34px rgba(15,55,36,.065);
+  --rs-shadow: 0 12px 34px rgba(15, 55, 36, 0.065);
 }
-a:focus-visible, button:focus-visible, input:focus-visible,
-select:focus-visible, textarea:focus-visible {
-  outline: 3px solid rgba(8,123,73,.28);
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(8, 123, 73, 0.28);
   outline-offset: 3px;
 }
-button, a { -webkit-tap-highlight-color: transparent; }
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
